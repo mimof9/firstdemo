@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="react.js"></script>
+	<script type="text/javascript" src="react-dom.js"></script>
+	<script type="text/javascript" src="babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		class MyTitle extends React.Component {
+			constructor(...args) {
+				super(...args);
+				this.state = {
+					text: 'World',
+					isClicked: false
+				};
+			}
+
+			// 点击切换当前日期和World
+			handleClick() {
+				let isClicked = !this.state.isClicked;
+				let d = new Date();
+				this.setState({
+					isClicked: isClicked,
+					text: isClicked ? `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}号` : 'World'
+				});
+			}
+
+			render() {
+				return <h1 onClick={this.handleClick.bind(this)}>
+					{'Hello ' + this.state.text}
+				</h1>;
+			}
+		}
+
+		ReactDOM.render(
+			<MyTitle />,
+			document.getElementById('example')
+		);
+	</script>
+</body>
+</html>

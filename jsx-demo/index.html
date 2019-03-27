@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="react.js"></script>
+  <script src="react-dom.js"></script>
+  <script src="babel.min.js"></script>
+</head>
+<body>
+  <div id="example"></div>
+<script type="text/babel">
+  // 接受两个参数 虚拟DOM节点和真实DOM节点 作用是将虚拟DOM挂载到真实DOM
+  ReactDOM.render(
+    <span>Hello React!</span>,
+    document.getElementById('example')
+  );
+</script>
+</body>
+</html>

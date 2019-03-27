@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="react.js"></script>
+	<script type="text/javascript" src="react-dom.js"></script>
+	<script type="text/javascript" src="babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		class MyTitle extends React.Component {
+			constructor(...args) {
+				super(...args);
+				this.state = {
+					name: '访问者'
+				};
+			}
+
+			// this.setState用来重置this.state 调用这个方法会引发组件重新渲染
+			handleChange(e){
+				let name = e.target.value;
+				this.setState({
+					name: name
+				});
+			}
+
+			// 这里this指向MyTitle这个虚拟DOM节点 调用方法时一定要绑定this
+			render() {
+				return <div>
+					<input type="text" onChange={this.handleChange.bind(this)} />
+					<p>你好，{this.state.name}</p>
+				</div>;
+			}
+		}
+
+		ReactDOM.render(
+			<MyTitle />,
+			document.getElementById('example')
+		);
+		
+	</script>
+</body>
+</html>

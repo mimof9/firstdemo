@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="react.js"></script>
+	<script type="text/javascript" src="react-dom.js"></script>
+	<script type="text/javascript" src="babel.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		// 组件获取使用this.props获取参数
+		// 这里用{{}}外面一层表示里面是js代码 里面一层表示js对象
+		class MyTitle extends React.Component {
+			render() {
+				return <h1 style={{color: this.props.color}}>Hello World</h1>;
+			}
+		};
+
+		// 给组件传入参数时 直接使用HTML属性的写法即可
+		ReactDOM.render(
+			<MyTitle color="yellow" />,
+			document.getElementById('example'));
+	</script>
+</body>
+</html>
